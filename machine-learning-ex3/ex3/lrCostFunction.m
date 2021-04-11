@@ -35,9 +35,15 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+hypothesisX = sigmoid(X*theta);
+costMatrix = -y.*log(hypothesisX) - (1-y).*log(1-hypothesisX);
+regularization = lambda / (2*m) * sum(theta(2:length(theta)).^2);
+J = 1/m * sum(costMatrix) + regularization
 
-
-
+grad = 1/m * sum((hypothesisX-y).*X);
+temp = theta;
+temp(1) = 0;
+grad = grad' + lambda / m * temp
 
 
 
