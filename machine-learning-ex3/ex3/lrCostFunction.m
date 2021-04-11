@@ -38,12 +38,12 @@ grad = zeros(size(theta));
 hypothesisX = sigmoid(X*theta);
 costMatrix = -y.*log(hypothesisX) - (1-y).*log(1-hypothesisX);
 regularization = lambda / (2*m) * sum(theta(2:length(theta)).^2);
-J = 1/m * sum(costMatrix) + regularization
+J = 1/m * sum(costMatrix) + regularization;
 
 grad = 1/m * sum((hypothesisX-y).*X);
 temp = theta;
 temp(1) = 0;
-grad = grad' + lambda / m * temp
+grad = grad' + lambda / m * temp;
 
 
 
